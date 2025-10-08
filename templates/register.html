@@ -1,0 +1,82 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Register</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f6f8;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+    .card {
+      background: white;
+      padding: 24px;
+      border-radius: 8px;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+      width: 360px;
+    }
+    input {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      border-radius: 6px;
+      border: 1px solid #ddd;
+    }
+    .btn {
+      display: block;
+      padding: 10px;
+      border-radius: 6px;
+      text-align: center;
+      text-decoration: none;
+      margin-top: 10px;
+      background: #1e88e5;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    .alert {
+      padding: 10px;
+      border-radius: 6px;
+      margin-bottom: 10px;
+    }
+    .alert-success {
+      background-color: #c8e6c9;
+      color: #256029;
+    }
+    .alert-danger {
+      background-color: #ffcdd2;
+      color: #b71c1c;
+    }
+    .alert-info {
+      background-color: #bbdefb;
+      color: #0d47a1;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h2>Buat Akun</h2>
+
+    <!-- ✅ BAGIAN UNTUK FLASH MESSAGE -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        {% for category, message in messages %}
+          <div class="alert alert-{{ category }}">{{ message }}</div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+    <!-- ✅ SELESAI FLASH MESSAGE -->
+
+    <form method="post">
+      <input name="name" placeholder="Nama (opsional)">
+      <input name="email" placeholder="Email" type="email" required>
+      <input name="password" placeholder="Password" type="password" required>
+      <button class="btn" type="submit">Daftar</button>
+    </form>
+  </div>
+</body>
+</html>
